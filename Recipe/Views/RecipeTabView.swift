@@ -9,9 +9,9 @@ import SwiftUI
 
 struct RecipeTabView: View {
     var body: some View {
-        
+        // Tab View
         TabView {
-            
+                       
             Text("Featured View")
                 .tabItem {
                     VStack {
