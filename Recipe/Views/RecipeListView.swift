@@ -16,7 +16,7 @@ struct RecipeListView: View {
         VStack {
             
             NavigationView {
-                
+                 
                 List(model.recipes) { r in
                     
                     NavigationLink(destination: RecipeDetailView(recipe: r),

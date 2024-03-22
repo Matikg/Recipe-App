@@ -35,7 +35,7 @@ struct RecipeDetailView: View {
                 }
                 .padding(.horizontal)
 
-                
+                     
                 Divider()
                 
                 //MARK: Directions
