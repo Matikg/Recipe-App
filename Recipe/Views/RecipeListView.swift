@@ -9,14 +9,14 @@ import SwiftUI
 
 struct RecipeListView: View {
     
-    @ObservedObject var model = RecipeModel()
+    @EnvironmentObject var model:RecipeModel
     
     var body: some View {
         
         VStack {
             
             NavigationView {
-                 
+                
                 List(model.recipes) { r in
                     
                     NavigationLink(destination: RecipeDetailView(recipe: r),
