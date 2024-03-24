@@ -42,5 +42,5 @@ struct RecipeListView: View {
 }
 
 #Preview {
-    RecipeListView()
+    RecipeListView().environmentObject(model)
 }
