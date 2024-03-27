@@ -8,10 +8,6 @@
 import SwiftUI
 
 struct RecipeHighlights: View {
-<<<<<<< HEAD
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-=======
     
     var allHighlights = ""
     
@@ -30,14 +26,10 @@ struct RecipeHighlights: View {
     
     var body: some View {
         Text(allHighlights)
->>>>>>> 64ad9a2 (Update text info in FeaturedView)
     }
-}
-
-#Preview {
-<<<<<<< HEAD
-    RecipeHighlights()
-=======
-    RecipeHighlights(highlights: ["test", "test2"])
->>>>>>> 64ad9a2 (Update text info in FeaturedView)
+    
+    
+    #Preview {
+        RecipeHighlights(highlights: ["test", "test2"])
+    }
 }
