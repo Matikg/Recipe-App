@@ -27,7 +27,8 @@ struct RecipeDetailView: View {
                 Text(recipe.name)
                     .padding(.top, 20)
                     .padding(.leading)
-                    .font(.largeTitle)
+                    .font(Font.custom("Avenir Heavy", size: 24))
+
                     .bold()
                 
                 
@@ -51,7 +52,7 @@ struct RecipeDetailView: View {
                 //MARK: Ingredients
                 VStack(alignment: .leading) {
                     Text("Ingredients")
-                        .font(.headline)
+                        .font(Font.custom("Avenir Heavy", size: 16))
                         .padding([.bottom, .top], 5)
                     
                     ForEach (recipe.ingredients) { item in
@@ -67,7 +68,7 @@ struct RecipeDetailView: View {
                 //MARK: Directions
                 VStack(alignment: .leading) {
                     Text("Directions")
-                        .font(.headline)
+                        .font(Font.custom("Avenir Heavy", size: 16))
                         .padding([.bottom, .top], 5)
                     
                     ForEach(0..<recipe.directions.count, id: \.self) { index in
