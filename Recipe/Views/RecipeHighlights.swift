@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+// Showing recipe highlights
 struct RecipeHighlights: View {
     
     var allHighlights = ""
