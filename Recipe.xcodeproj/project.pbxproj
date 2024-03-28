@@ -102,10 +102,10 @@
 		E8835F672BA71FCA00730395 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E8835F5B2BA71F8500730395 /* RecipeListView.swift */,
-				E8835F742BA7539600730395 /* RecipeDetailView.swift */,
 				E811B3762BADE1C500BD3EFE /* RecipeTabView.swift */,
 				E811B3922BAEC4F200BD3EFE /* RecipeFeaturedView.swift */,
+				E8835F5B2BA71F8500730395 /* RecipeListView.swift */,
+				E8835F742BA7539600730395 /* RecipeDetailView.swift */,
 				E88AFB532BB46B9E00EA94D3 /* RecipeHighlights.swift */,
 			);
 			path = Views;

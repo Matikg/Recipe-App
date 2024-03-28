@@ -13,9 +13,9 @@ struct RecipeFeaturedView: View {
     @State var isDetailViewShowing = false
     @State var tabSelectionIndex = 0
     
-    
-    
     var body: some View {
+        
+        let featuredRecipes = model.recipes.filter({ $0.featured })
         
         VStack(alignment: .leading, spacing: 0) {
             
@@ -29,41 +29,33 @@ struct RecipeFeaturedView: View {
                 
                 TabView (selection: $tabSelectionIndex) {
                     
-                    ForEach (0..<model.recipes.count) { index in
+                    ForEach (featuredRecipes.indices, id: \.self) { index in
                         
-                        if model.recipes[index].featured == true {
+                        Button(action: {
                             
-                            Button(action: {
+                            self.isDetailViewShowing = true
+                            
+                        }, label: {
+                            ZStack {
+                                Rectangle()
+                                    .foregroundColor(.white)
                                 
-                                self.isDetailViewShowing = true
-                                
-                            }, label: {
-                                ZStack {
-                                    Rectangle()
-                                        .foregroundColor(.white)
-                                        
+                                VStack(spacing: 0){
+                                    Image(featuredRecipes[index].image)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .clipped()
                                     
-                                    VStack(spacing: 0){
-                                        Image(model.recipes[index].image)
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .clipped()
-                                        
-                                        Text(model.recipes[index].name)
-                                            .padding(5)
-                                    }
+                                    Text(featuredRecipes[index].name)
+                                        .padding(5)
                                 }
-                            })
-                            .tag(index)
-                            .sheet(isPresented: $isDetailViewShowing) {
-                                RecipeDetailView(recipe: model.recipes[index])
                             }
-                            .buttonStyle(PlainButtonStyle())
-                            .frame(width: geo.size.width - 40, height: geo.size.height - 100, alignment: .center)
-                            .cornerRadius(15)
-                            .shadow(color: Color(.sRGB, red: 0, green: 0, blue: 0, opacity: 0.5), radius: 10, x: -5, y: 5)
-                            
-                        }
+                        })
+                        .tag(index)
+                        .buttonStyle(PlainButtonStyle())
+                        .frame(width: geo.size.width - 40, height: geo.size.height - 100, alignment: .center)
+                        .cornerRadius(15)
+                        .shadow(color: Color(.sRGB, red: 0, green: 0, blue: 0, opacity: 0.5), radius: 10, x: -5, y: 5)
                     }
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
@@ -73,31 +65,23 @@ struct RecipeFeaturedView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text("Preparation Time:")
                     .font(Font.custom("Avenir Heavy", size: 16))
-
+                
                 Text(model.recipes[tabSelectionIndex].prepTime)
+                
                 Text("Highlights:")
                     .font(Font.custom("Avenir Heavy", size: 16))
-
+                
                 RecipeHighlights(highlights: model.recipes[tabSelectionIndex].highlights)
             }
             .padding(.leading)
             .padding(.bottom)
-
         }
-        .onAppear(perform: {
-            setFeaturedIndex()
-        })
-    }
-    
-    func setFeaturedIndex() {
-        
-        var index = model.recipes.firstIndex { recipe in
-            return recipe.featured
+        .sheet(isPresented: $isDetailViewShowing) {
+            RecipeDetailView(recipe: featuredRecipes[tabSelectionIndex])
         }
-        tabSelectionIndex = index ?? 0
-        
     }
 }
+
 
 #Preview {
     RecipeFeaturedView()
